@@ -1,0 +1,176 @@
+.App {
+  text-align: center;
+}
+
+
+body {
+  background-image: url('./images/beautiful-pink-spa-flower_23-2148290895_faded.jpg');
+  background-size: cover;
+  background-position-y: -140px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Lato', sans-serif;
+  color: rgb(0, 0, 0);
+  font-size: 1.2em;
+  margin: 20px
+}
+
+.nav-bar{
+  width: 100%;
+  text-align: center;
+}
+
+.nav-bar ul {
+  display: inline-flex;
+  justify-content: space-around; 
+  list-style-type: none;
+}
+
+.nav-bar li a {
+  text-decoration: none;
+  color: black;
+  margin: 20px;
+}
+
+.user-list ul {
+  list-style-type: none;
+  margin: 0;
+  margin-top: 50px
+}
+
+.user-list li a {
+  text-decoration: none;
+  color: black;
+}
+
+.user-list li {
+  margin: 10px auto;
+  border: solid black 1px;
+  width: 40%;
+  text-align: center;
+  height: 30px;
+  padding-top: 7px
+}
+
+.user-list li:hover {
+  background-image: url('./images/beautiful-pink-spa-flower_23-2148290895.jpg');
+  background-size: cover;
+  background-position-y: 160px;
+}
+
+.user-list {
+  text-align: center;
+}
+
+.user-page {
+  text-align: center;
+}
+
+.user-details {
+  border: solid black 1px;
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: rgba(255,255,255,0.15);
+}
+
+.user-details h2 {
+  margin: 0px;
+}
+
+.user-buttons {
+  width: 51.7%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.user-buttons button {
+  width: 49%;
+  height: 50px;
+  font-size: 1em;
+  background: none;
+  border: 1px solid black;
+  background-color: rgba(255,255,255,0.15);
+}
+
+.user-buttons button:hover {
+  background-image: url('./images/beautiful-pink-spa-flower_23-2148290895.jpg');
+  background-size: cover;
+  background-position-y: 100px;
+}
+
+.product-form  {
+  text-align: center;
+  width: 70%;
+  border: solid black 1px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(255,255,255,0.15);
+
+}
+
+
+.product-form h3 {
+  margin: 0;
+}
+
+.product-form button {
+  width: 100px;
+  height: 40px;
+  font-size: 1em;
+  background: none;
+  border: solid black 1px;
+}
+
+.product-form button:hover {
+  background-image: url('./images/beautiful-pink-spa-flower_23-2148290895.jpg');
+  background-size: cover;
+  background-position-y: 105px;
+}
+
+.product-details {
+  text-align: left;
+  border-bottom: solid black 1px;
+  padding: 10px 0;
+}
+
+.product-details p {
+  margin: 0;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.product-search {
+  width: 50%;
+  justify-content: center;
+  border: solid black 1px;
+  margin: 0 auto;
+  display: block;
+  padding: 10px
+}
+.product-search input {
+  height: 25px;
+  border: none;
+  width: 50%;
+  font-size: 1em
+}
+
+.search-button {
+  width: 100px;
+  height: 30px;
+  font-size: 1em;
+  background: none;
+  border: solid black 1px;
+  margin-top: 10px
+}
+
+.search-button:hover {
+  background-image: url('./images/beautiful-pink-spa-flower_23-2148290895.jpg');
+  background-size: cover;
+  background-position-y: 105px;
+}
