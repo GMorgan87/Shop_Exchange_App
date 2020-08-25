@@ -23,18 +23,13 @@ class AddProductForm extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleCategory = this.handleCategory.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleQuantity = this.handleQuantity.bind(this);
+    this.handlePrice = this.handlePrice.bind(this);
   }
   handleChange(event){
     let propertyName = event.target.name;
     let product = this.state.product
     product[propertyName] = event.target.value;
     this.setState({product: product})
-  }
-
-  handleQuantity(event){
-    let qty = parseInt(event.target.value);
-    this.setState({qty:qty})
   }
 
   handleCategory(event){
@@ -47,7 +42,30 @@ class AddProductForm extends Component {
 
   handleSubmit(event){
     event.preventDefault();
-    this.handlePost(this.state.product);
+    let newPrice = (this.state.product.price * 100).toFixed(0);
+    let product = this.state.product;
+    console.log("this is new price: ", newPrice);
+    product.price = newPrice;
+    console.log("this is the product:", product);
+    this.setState({product: {
+      user:{id:this.props.userId},
+      name: "",
+      description: "",
+      price: 0,
+      category: this.state.categories[0],
+      status: "Private",
+      rentCondition: "Clean",
+      replaceStatus: "New",
+      quantity: 0
+    }
+    })
+
+    this.handlePost(product);
+
+  }
+
+  handlePrice(event){
+    
   }
 
   
@@ -59,8 +77,6 @@ handlePost(product){
     request.post("/api/products", product).then(
       () => this.props.updateProducts() 
     )
-    
-    
   };
   
 
@@ -94,9 +110,9 @@ handlePost(product){
       <span>Description: </span>
       <input type="text" name="description" onChange={this.handleChange} value={this.state.product.description} />
       <span>Price: </span>
-      <input type="number" name="price" onChange={this.handleChange} value={this.state.product.price}/>
+      <input type="number" step="0.01" name="price" onChange={this.handleChange} value={this.state.product.price}/>
       <span>Quantity: </span>
-      <input name="quantity" type="number" placeholder="quantity" onChange={this.handleChange} value={this.state.quantity}/>
+      <input name="quantity" type="number" placeholder="quantity" onChange={this.handleChange} value={this.state.product.quantity}/>
       <br/>
       <br/>
       <span>Category: </span>
