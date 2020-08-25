@@ -53,13 +53,11 @@ class AddProductForm extends Component {
   
 
 
-  //create a description
-//assign description to product
-//create as many product as needed using loop
+
 handlePost(product){
   const request = new Request()   
     request.post("/api/products", product).then(
-      this.props.updateProducts() 
+      () => this.props.updateProducts() 
     )
     
     
