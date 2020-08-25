@@ -7,16 +7,18 @@ class AddProductForm extends Component {
     super(props);
     this.state = {
       product: {
+        user:this.props.userId,
         name: "",
         description: "",
         price: 0,
         category: null,
-        status: "PRIVATE",
-        rentCondition: "CLEAN",
-        replaceStatus: "NEW"
+        status: "Private",
+        rentCondition: "Clean",
+        replaceStatus: "New",
+        quantity: 0
       },
-      categories:[],
-      qty: 0
+      categories:[]
+      
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleCategory = this.handleCategory.bind(this);
@@ -48,33 +50,19 @@ class AddProductForm extends Component {
     this.handlePost(this.state.product);
   }
 
-  addProduct(productDescription) {
-    const request = new Request()
-    let product = {user:{id:this.props.userId},
-    productDescription:productDescription
-    }
-    console.log(product);
-    
-    for (let i = 0; i < this.state.qty; i++) {
-      request.post("/api/products", product)
-    }
-    this.props.updateProducts() 
-  }
+  
 
 
   //create a description
 //assign description to product
 //create as many product as needed using loop
-handlePost(productDescription){
-  const request = new Request();
-  console.log(productDescription);
-  request.post("/api/product_description", productDescription)
-  .then((res)=>res.json())
-  .then((res)=>{
-    this.addProduct(res)
-  }
-  )
+handlePost(product){
+  const request = new Request()   
+    request.post("/api/products", product)
+    
+    this.props.updateProducts() 
   };
+  
 
 
   componentDidMount(){
@@ -108,7 +96,7 @@ handlePost(productDescription){
       <span>Price: </span>
       <input type="number" name="price" onChange={this.handleChange} value={this.state.product.price}/>
       <span>Quantity: </span>
-      <input name="qty" type="number" placeholder="quantity" onChange={this.handleQuantity} value={this.state.qty}/>
+      <input name="qty" type="number" placeholder="quantity" onChange={this.handleChange} value={this.state.quantity}/>
       <br/>
       <br/>
       <span>Category: </span>
@@ -118,19 +106,19 @@ handlePost(productDescription){
       </select>
       <span>Status: </span>
       <select name ="status" onChange={this.handleChange} defaultValue="select-status">
-        <option value="PRIVATE">Private</option>
-        <option value="RENT">Rent</option>
-        <option value="LEND">Lend</option>
+        <option value="Private">Private</option>
+        <option value="Rent">Rent</option>
+        <option value="Lend">Lend</option>
       </select>
       <span>Rent Condition: </span>
       <select name ="rentCondition" onChange={this.handleChange} defaultValue="select-rentCondition">
-        <option value="CLEAN">Clean/Clean</option>
-        <option value="DIRTY">Dirty/Dirty</option>
+        <option value="Clean">Clean/Clean</option>
+        <option value="Dirty">Dirty/Dirty</option>
       </select>
       <span>Replace Status: </span>
       <select name ="replaceStatus" onChange={this.handleChange} defaultValue="select-replaceStatus">
-        <option value="NEW">New for old</option>
-        <option value="FEE">Pay fee</option>
+        <option value="New">New for old</option>
+        <option value="Fee">Pay fee</option>
       </select>
       <br/>
       <br/>
