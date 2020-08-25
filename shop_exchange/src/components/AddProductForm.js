@@ -7,7 +7,7 @@ class AddProductForm extends Component {
     super(props);
     this.state = {
       product: {
-        user:this.props.userId,
+        user:{id:this.props.userId},
         name: "",
         description: "",
         price: 0,
@@ -58,9 +58,11 @@ class AddProductForm extends Component {
 //create as many product as needed using loop
 handlePost(product){
   const request = new Request()   
-    request.post("/api/products", product)
+    request.post("/api/products", product).then(
+      this.props.updateProducts() 
+    )
     
-    this.props.updateProducts() 
+    
   };
   
 
@@ -96,7 +98,7 @@ handlePost(product){
       <span>Price: </span>
       <input type="number" name="price" onChange={this.handleChange} value={this.state.product.price}/>
       <span>Quantity: </span>
-      <input name="qty" type="number" placeholder="quantity" onChange={this.handleChange} value={this.state.quantity}/>
+      <input name="quantity" type="number" placeholder="quantity" onChange={this.handleChange} value={this.state.quantity}/>
       <br/>
       <br/>
       <span>Category: </span>
